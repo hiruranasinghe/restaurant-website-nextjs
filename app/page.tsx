@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Slider from "./components/slider"; 
+import Featured from "./components/Featured";
 
 export default function Home() {
   return (
-    
     <main>
-      <h1>Welcome to My Next.js App</h1>
-      
+      <Slider />  {/* Capital S */}
+      <Featured />
     </main>
   );
 }
