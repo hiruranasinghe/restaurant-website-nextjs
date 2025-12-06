@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Notification = () => {
+export default function Notification() {
   return (
     <div>Notification</div>
   )
