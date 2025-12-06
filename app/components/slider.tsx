@@ -67,10 +67,10 @@ export default function Slider() {
         aria-label={`Hero slide ${currentSlide + 1} of ${slides.length}`}
       ></div>
 
-      {/* Gradient Overlay */}
+    
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/0"></div>
 
-      {/* Text Content */}
+    
       <div className="relative z-10 text-center text-white px-4 max-w-4xl transition-opacity duration-700 ease-in-out">
         <h1
           id="hero-title"
@@ -83,7 +83,7 @@ export default function Slider() {
         </p>
 
         <Link href="/menu">
-          {/* 🚀 PERFECTED BUTTON: Added hover animation, text, and stronger box shadow */}
+         
           <button 
             className="mt-10 px-10 py-4 bg-red-700 text-white font-bold text-xl uppercase tracking-widest rounded-full 
                        shadow-[0_0_20px_rgba(255,215,0,0.5)] transition-all duration-300 transform 
