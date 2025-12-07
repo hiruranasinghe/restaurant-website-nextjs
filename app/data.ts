@@ -1,94 +1,393 @@
-export interface FeaturedItem {
+type Product = {
   id: number;
-  name: string;
-  description: string;
-  image: string;
-  price: string;
-}
+  title: string;
+  desc?: string;
+  img?: string;
+  price: number;
+  options?: { title: string; additionalPrice: number }[];
+};
 
-export const featuredItems: FeaturedItem[] = [
+type Products = Product[];
+
+export const featuredProducts: Products = [
   {
     id: 1,
-    name: "Margherita Pizza",
-    description: "Classic Neapolitan perfection: San Marzano tomatoes, fresh mozzarella & basil.",
-    image: "/temporary/p1.png",
-    price: "€12.99",
+    title: "Sicilian",
+    desc: "Ignite your taste buds with a fiery combination of spicy pepperoni, jalapeños, crushed red pepper flakes, and melted mozzarella cheese, delivering a kick with every bite.",
+    img: "/temporary/p1.png",
+    price: 24.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 2,
-    name: "Spaghetti Carbonara", 
-    description: "Authentic Roman dish with cured guanciale, egg yolk, Pecorino cheese & black pepper.",
-    image: "/temporary/p2.png",
-    price: "€14.50",
+    title: "Bacon Deluxe",
+    desc: "Indulge in smoky goodness with a flame-grilled beef patty, topped with crispy bacon, melted cheddar cheese, caramelized onions, and a smattering of tangy BBQ sauce.",
+    img: "/temporary/p2.png",
+    price: 29.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 3,
-    name: "Spicy Diavola Pizza",
-    description: "Loaded with hot Calabrian chili, spicy salami, mozzarella & fiery tomato sauce.",
-    image: "/temporary/p3.png",
-    price: "€15.99",
+    title: "Bella Napoli",
+    desc: "A classic Italian delight featuring a thin, crispy crust, tangy tomato sauce, fresh mozzarella, and a medley of aromatic herbs topped with lettuce, tomatoes, and a dollop of tangy mayo.",
+    img: "/temporary/p3.png",
+    price: 24.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 4,
-    name: "Fettuccine Alfredo",
-    description: "Creamy pasta with parmesan, butter & a hint of nutmeg.",
-    image: "/temporary/p4.png",
-    price: "€13.50",
+    title: "Spicy Arrabbiata",
+    desc: "Ignite your taste buds with this fiery pasta creation, combining penne in a spicy tomato sauce infused with garlic, red chili flakes, and fresh basil for the ultimate comfort food experience.",
+    img: "/temporary/p4.png",
+    price: 26.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 5,
-    name: "Classic Burger",
-    description: "Juicy beef patty with fresh lettuce, tomato & cheddar cheese.",
-    image: "/temporary/p5.png",
-    price: "€11.99",
+    title: "Jalapeño Fiesta",
+    desc: "Ignite your taste buds with a fiery kick! This burger features a succulent beef patty, fiery jalapeños, pepper jack cheese, and a zesty chipotle mayo sauce , and all the classic fixings on a toasted bun.",
+    img: "/temporary/p5.png",
+    price: 29.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 6,
-    name: "Pepperoni Pizza",
-    description: "Crispy thin crust with zesty tomato sauce and loaded with pepperoni.",
-    image: "/temporary/p6.png",
-    price: "€14.99",
+    title: "Margherita Magic",
+    desc: "A timeless favorite with a twist, showcasing a thin crust topped with sweet tomatoes, fresh basil, creamy mozzarella, and a drizzle of extra virgin olive oil, fresh arugula, and a drizzle of balsamic glaze.",
+    img: "/temporary/p6.png",
+    price: 24.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 7,
-    name: "Penne Arrabbiata",
-    description: "Spicy tomato sauce with garlic and chili flakes over penne pasta.",
-    image: "/temporary/p7.png",
-    price: "€12.50",
+    title: "Garlic Parmesan Linguine",
+    desc: "A garlic lover's delight, featuring linguine smothered in a creamy Parmesan sauce, infused with garlic and garnished with chopped parsley, bell peppers, and cherry tomatoes.",
+    img: "/temporary/p7.png",
+    price: 28.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 8,
-    name: "Hawaiian Pizza",
-    description: "Sweet pineapple and savory ham over melted mozzarella and tomato sauce.",
-    image: "/temporary/p8.png",
-    price: "€15.50",
+    title: "Mediterranean Delight",
+    desc: "Embark on a culinary journey with this Mediterranean-inspired creation, featuring zesty feta cheese, Kalamata olives, sun-dried tomatoes, and a sprinkle of oregano.",
+    img: "/temporary/p8.png",
+    price: 32.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
     id: 9,
-    name: "Cheeseburger Deluxe",
-    description: "Beef patty with double cheddar, caramelized onions & pickles.",
-    image: "/temporary/p9.png",
-    price: "€12.99",
+    title: "Hawaiian Teriyaki",
+    desc: "Experience a taste of the tropics with a juicy beef patty glazed in tangy teriyaki sauce, topped with grilled pineapple, crispy bacon, and fresh lettuce, and all the classic fixings on a toasted bun.",
+    img: "/temporary/p9.png",
+    price: 29.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
+  },
+];
+
+
+
+
+export const pizzas: Products = [
+  {
+    id: 1,
+    title: "Sicilian",
+    desc: "Ignite your taste buds with a fiery combination of spicy pepperoni, jalapeños, crushed red pepper flakes, and melted mozzarella cheese, delivering a kick with every bite.",
+    img: "/temporary/p1.png",
+    price: 24.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
-    id: 10,
-    name: "Veggie Pizza",
-    description: "Loaded with bell peppers, onions, mushrooms, olives & mozzarella.",
-    image: "/temporary/p10.png",
-    price: "€13.99",
+    id: 2,
+    title: "Mediterranean Delight",
+    desc: "Embark on a culinary journey with this Mediterranean-inspired creation, featuring zesty feta cheese, Kalamata olives, sun-dried tomatoes, and a sprinkle of oregano.",
+    img: "/temporary/p8.png",
+    price: 32.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
-    id: 11,
-    name: "Spaghetti Bolognese",
-    description: "Classic Italian meat sauce over al dente spaghetti.",
-    image: "/temporary/p11.png",
-    price: "€14.50",
+    id: 3,
+    title: "Bella Napoli",
+    desc: "A classic Italian delight featuring a thin, crispy crust, tangy tomato sauce, fresh mozzarella, and a medley of aromatic herbs topped with lettuce, tomatoes, and a dollop of tangy mayo.",
+    img: "/temporary/p3.png",
+    price: 26.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
   },
   {
-    id: 12,
-    name: "Four Cheese Pizza",
-    description: "Mozzarella, parmesan, gorgonzola & ricotta over tomato base.",
-    image: "/temporary/p12.png",
-    price: "€16.50",
+    id: 4,
+    title: "Pesto Primavera",
+    desc: "A classic Italian delight featuring a thin, crispy crust, tangy tomato sauce, fresh mozzarella, and a medley of aromatic herbs topped with lettuce, tomatoes, and a dollop of tangy mayo.",
+    img: "/temporary/p10.png",
+    price: 28.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Veggie Supreme",
+    desc: "A classic Italian delight featuring a thin, crispy crust, tangy tomato sauce, fresh mozzarella, and a medley of aromatic herbs topped with lettuce, tomatoes, and a dollop of tangy mayo.",
+    img: "/temporary/p11.png",
+    price: 24.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "Four Cheese Fantasy",
+    desc: "Experience pure cheesy bliss with a melty blend of mozzarella, cheddar, provolone, and Parmesan cheeses, creating a rich and indulgent pizza experience.",
+    img: "/temporary/p12.png",
+    price: 22.9,
+    options: [
+      {
+        title: "Small",
+        additionalPrice: 0,
+      },
+      {
+        title: "Medium",
+        additionalPrice: 4,
+      },
+      {
+        title: "Large",
+        additionalPrice: 6,
+      },
+    ],
+  },
+];
+
+export const singleProduct: Product = {
+  id: 1,
+  title: "Sicilian",
+  desc: "Ignite your taste buds with a fiery combination of spicy pepperoni, jalapeños, crushed red pepper flakes, and melted mozzarella cheese, delivering a kick with every bite.",
+  img: "/temporary/p1.png",
+  price: 24.9,
+  options: [
+    {
+      title: "Small",
+      additionalPrice: 0,
+    },
+    {
+      title: "Medium",
+      additionalPrice: 4,
+    },
+    {
+      title: "Large",
+      additionalPrice: 6,
+    },
+  ],
+};
+
+
+type Menu = {
+  id: number;
+  slug: string;
+  title: string;
+  desc?: string;
+  img?: string;
+  color: string;
+}[];
+
+export const menu: Menu = [
+  {
+    id: 1,
+    slug: "pastas",
+    title: "Italian Pastas",
+    desc: "Savor the taste of perfection with our exquisite Italian handmade pasta menu.",
+    img: "/temporary/m1.png",
+    color: "white",
+  },
+  {
+    id: 2,
+    slug: "burgers",
+    title: "Juicy Burgers",
+    desc: "Burger Bliss: Juicy patties, bold flavors, and gourmet toppings galore.",
+    img: "/temporary/m2.png",
+    color: "black",
+  },
+  {
+    id: 3,
+    slug: "pizzas",
+    title: "Cheesy Pizzas",
+    desc: "Pizza Paradise: Irresistible slices, mouthwatering toppings, and cheesy perfection.",
+    img: "/temporary/m3.png",
+    color: "white",
   },
 ];
