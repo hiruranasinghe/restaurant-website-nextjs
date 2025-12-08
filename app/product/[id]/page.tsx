@@ -19,7 +19,7 @@ const CategoryPage: React.FC = () => {
         <Link
           href={`/product/${item.id}`}
           key={item.id}
-          // Card Styling (left unchanged from last successful modification)
+        
           className="group relative rounded-2xl overflow-hidden 
                      shadow-xl hover:shadow-2xl border border-gray-200 
                      flex flex-col h-[380px] bg-white 
@@ -34,9 +34,9 @@ const CategoryPage: React.FC = () => {
                 src={item.img}
                 alt={item.title}
                 fill
-                // 🚀 MODIFIED: Added 360-degree rotation on group hover
+            
                 className="object-cover group-hover:scale-110 
-                           group-hover:rotate-[360deg] // <--- THE 360-DEGREE ROTATION
+                           group-hover:rotate-[360deg] 
                            transition-all duration-500 ease-in-out"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 quality={80}
@@ -44,7 +44,7 @@ const CategoryPage: React.FC = () => {
             </div>
           )}
 
-          {/* TEXT */}
+    
           <div className="flex flex-col justify-between p-4 h-1/3">
             <h2 className="text-2xl font-extrabold uppercase text-red-800 tracking-wide">
               {item.title}
@@ -54,7 +54,7 @@ const CategoryPage: React.FC = () => {
                 ${item.price.toFixed(2)}
               </span>
               
-              {/* BUTTON */}
+          
               <button 
                 className="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-extrabold 
                            shadow-lg hover:shadow-xl transition-all duration-300 transform 
