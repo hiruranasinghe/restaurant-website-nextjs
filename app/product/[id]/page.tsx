@@ -1,73 +1,82 @@
 "use client";
 
-import React from "react";
-import { pizzas } from "../../data";
+import Price from "../../components/Price";
+import { singleProduct } from "../../data";
 import Image from "next/image";
-import Link from "next/link";
+import React from "react";
 
-interface Pizza {
-  id: number;
+// 1. Define TypeScript Interfaces for structure and safety
+interface Option {
   title: string;
-  price: number;
-  img?: string;
+  additionalPrice: number;
 }
 
-const CategoryPage: React.FC = () => {
-  return (
-    <div className="p-4 lg:px-20 xl:px-40 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 bg-gray-50 min-h-screen">
-      {pizzas.map((item: Pizza) => (
-        <Link
-          href={`/product/${item.id}`}
-          key={item.id}
-        
-          className="group relative rounded-2xl overflow-hidden 
-                     shadow-xl hover:shadow-2xl border border-gray-200 
-                     flex flex-col h-[380px] bg-white 
-                     transform hover:scale-[1.03] hover:-translate-y-2 
-                     transition-all duration-500 ease-in-out
-                     hover:ring-4 hover:ring-red-400 hover:ring-offset-2"
-        >
-          {/* IMAGE */}
-          {item.img && (
-            <div className="relative h-2/3 w-full overflow-hidden">
-              <Image
-                src={item.img}
-                alt={item.title}
-                fill
-            
-                className="object-cover group-hover:scale-110 
-                           group-hover:rotate-[360deg] 
-                           transition-all duration-500 ease-in-out"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                quality={80}
-              />
-            </div>
-          )}
+interface Product {
+  id: number;
+  title: string;
+  desc: string;
+  img?: string; // Optional image field
+  price: number;
+  options?: Option[]; // Optional options array
+}
 
-    
-          <div className="flex flex-col justify-between p-4 h-1/3">
-            <h2 className="text-2xl font-extrabold uppercase text-red-800 tracking-wide">
-              {item.title}
-            </h2>
-            <div className="flex justify-between items-center mt-2">
-              <span className="text-2xl font-extrabold text-red-600">
-                ${item.price.toFixed(2)}
-              </span>
-              
-          
-              <button 
-                className="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-extrabold 
-                           shadow-lg hover:shadow-xl transition-all duration-300 transform 
-                           group-hover:bg-red-700 active:scale-95 group-hover:scale-[1.05]"
-              >
-                Add to Cart 🛒
-              </button>
-            </div>
-          </div>
-        </Link>
-      ))}
+// Type assertion for the imported data
+const product: Product = singleProduct as Product;
+
+const SingleProductPage: React.FC = () => {
+  return (
+    // Outer Container: Darker background, better spacing, ensures content is centered
+    <div className="min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-9rem)] p-8 md:p-16 lg:px-20 xl:px-40 bg-gray-900 text-white flex flex-col md:flex-row items-stretch gap-12 lg:gap-20">
+      
+      {/* IMAGE CONTAINER */}
+      {product.img && (
+        <div className="relative w-full md:w-1/2 flex-shrink-0 bg-gray-800 rounded-3xl shadow-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-[600px] border-4 border-red-500/20">
+          <Image
+            src={product.img}
+            alt={product.title}
+            fill
+            // Object-contain is good, but use 'object-cover' for a premium full-image look if possible
+            // Reverted to object-contain as per original, but added group-hover interaction
+            className="object-contain transition-transform duration-700 hover:scale-[1.05] p-6 md:p-8"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority={true}
+          />
+        </div>
+      )}
+
+      {/* TEXT & INFO CONTAINER */}
+      <div className="w-full md:w-1/2 flex flex-col justify-start gap-6 md:gap-8 lg:gap-10 pt-4 md:pt-0">
+        
+        {/* Title */}
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase text-red-500 tracking-wider border-b-2 border-red-500/50 pb-4">
+          {product.title}
+        </h1>
+        
+        {/* Description */}
+        <p className="text-gray-300 text-base sm:text-lg leading-loose italic">
+          {product.desc}
+        </p>
+
+        {/* Price Component (Controls Size, Options, and Quantity) */}
+        <div className="mt-2 p-6 bg-gray-800 rounded-xl shadow-inner shadow-black/30">
+          <Price 
+            price={product.price} 
+            id={product.id} 
+            options={product.options} 
+          />
+        </div>
+        
+        {/* Additional Info / Callout */}
+        <div className="flex items-center gap-3 text-red-400 font-semibold mt-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Ready in 30 minutes. Freshly prepared just for you.</span>
+        </div>
+        
+      </div>
     </div>
   );
 };
 
-export default CategoryPage;
+export default SingleProductPage;
